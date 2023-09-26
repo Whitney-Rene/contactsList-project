@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import CreateContact from './create-contacts'
 import Masonry from "react-responsive-masonry";
 
-// Modal.setAppElement('#yourAppElement');
+Modal.setAppElement('#root');
 
 function Contacts () {
 
@@ -50,8 +50,8 @@ function Contacts () {
             <Masonry columnsCount={1} gutter="16px">
 
                 {contacts.map ((contactItem) => (
-                    <div key={contactItem.id}>{contactItem.name}
-                    <button onClick={() => openModal(contactItem)}>View Details</button>
+                    <div className='contactName' key={contactItem.id}>{contactItem.name}
+                    <button className='viewDetsBut' onClick={() => openModal(contactItem)}>View Details</button>
                     </div>
                 ))}
 

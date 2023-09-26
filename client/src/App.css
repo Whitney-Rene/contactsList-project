@@ -67,3 +67,13 @@ label, input {
 form {
   margin-top: 100px;
 }
+
+.formTitle, .contactName {
+  font-weight: bold;
+  color: lightsalmon;
+}
+
+.viewDetsBu {
+  font-size: 7px; /* Adjust the font size as needed */
+  padding: 6px 12px; /* Increase padding to make the button larger */
+}

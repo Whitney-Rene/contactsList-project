@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import '../App.css'
 
 function CreateContact ({loadContacts}) {
@@ -43,18 +43,18 @@ function CreateContact ({loadContacts}) {
         contactPN.current.value='';
         contactNotes.current.value='';
 
-        loadContacts();
-
-
-
     }
+
+    useEffect (() => {
+        loadContacts();
+    }, []);
 
     return(
         <>
 
         <form className='form' onSubmit={handleSubmit}>
 
-            <p>add a contact</p>
+            <p className='formTitle'>add a contact</p>
 
             <label>Contact Name</label>
             <input type='text' name='contactname' required placeholder='name' ref={contactName}/>
@@ -66,7 +66,7 @@ function CreateContact ({loadContacts}) {
             <input type='text' name='phonenumber' placeholder='123-456-7890' ref={contactPN}/>
 
             <label>Notes?</label>
-            <input type='text' name='notes' placeholder='bday?' ref={contactNotes}/>
+            <input type='text' name='notes' placeholder='bday? fav candy?' ref={contactNotes}/>
 
             <div className='createButton'>
                 <button  type='submit'>Create New Contact</button>

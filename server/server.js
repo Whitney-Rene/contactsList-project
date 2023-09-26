@@ -36,8 +36,21 @@ app.get('/contacts', async (req, res) => {
 
 });
 
+app.post('/addcontact', async (req, res) => {
+    try {
+        const { name, email, phonenumber, notes } = req.body;
+        const result = await db.query(
 
+            // INSERT INTO contacts (name, email, phonenumber, notes) VALUES ('Valerie-Hope', 'bMITWvh@gmail.com', '794-788-9987', 'Birthday: 02/12');
 
+            'INSERT INTO contacts (name, eamil, phonenumber, notes) VALUES ($1, $2, $3. $4) RETURNING *',
+            [name, email, phonenumber, notes]
+        )
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({error});
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Hola, Te quiero mama ${PORT}`)

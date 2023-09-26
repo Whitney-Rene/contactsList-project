@@ -23,6 +23,19 @@ app.get('/', (req, res) => {
     res.json('Hola, como te va?');
 });
 
+// this route should respond to requests made to the "/contacts" endpoint
+app.get('/contacts', async (req, res) => {
+    try {
+        const {rows: contacts } = await db.query ('SELECT * FROM contacts');
+        //After fetching data from the database, this code sends a response to the client
+        res.send(contacts)
+    //error handling
+    } catch (error) {
+        return res.status(400).json({error});
+    }
+
+});
+
 
 
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ViewContact from './view-contacts';
 import Modal from 'react-modal';
+import CreateContact from './create-contacts'
 import Masonry from "react-responsive-masonry";
 
 // Modal.setAppElement('#yourAppElement');
@@ -60,6 +61,8 @@ function Contacts () {
 
             </Masonry>
         </div>
+
+        <CreateContact loadContacts={loadContacts}/>
         </>
     )
 

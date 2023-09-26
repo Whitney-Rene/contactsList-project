@@ -45,7 +45,8 @@ app.post('/addcontact', async (req, res) => {
 
             'INSERT INTO contacts (name, email, phonenumber, notes) VALUES ($1, $2, $3, $4) RETURNING *',
             [name, email, phonenumber, notes]
-        )
+        );
+        res.status(201).json(result.rows[0]);
     } catch (error) {
         console.log(error);
         return res.status(400).json({error});

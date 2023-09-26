@@ -1,16 +1,17 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import '../App.css'
 
-function CreateContact () {
+function CreateContact ({loadContacts}) {
 
     const contactName = useRef();
     const contactEmail = useRef();
     const contactPN = useRef();
-    const contactBD = useRef();
+    const contactNotes = useRef();
 
-    const handlePostRequest = async () => {
+
+    const handlePostRequest = async (data) => {
         try {
-            const response = await fetch ('http:localhost: 1965/addcontact', {
+            const response = await fetch ('http://localhost:1965/addcontact', {
                 method: 'POST',
                 headers: { 'Content-Type':'application/json'},
                 body: JSON.stringify(data)
@@ -30,7 +31,23 @@ function CreateContact () {
 
       const handleSubmit = (e) => {
 
-      }
+        e.preventDefault();
+
+        const newContact = {name: contactName.current?.value, email: contactEmail.current?.value, phonenumber: contactPN.current?.value, notes: contactNotes.current?.value}
+        console.log('did I grab it?', newContact);
+
+        handlePostRequest(newContact);
+
+        contactName.current.value='';
+        contactEmail.current.value='';
+        contactPN.current.value='';
+        contactNotes.current.value='';
+
+        loadContacts();
+
+
+
+    }
 
     return(
         <>
@@ -39,17 +56,17 @@ function CreateContact () {
 
             <p>add a contact</p>
 
-            <label for='contactname'>Contact Name</label>
+            <label>Contact Name</label>
             <input type='text' name='contactname' required placeholder='name' ref={contactName}/>
 
-            <label for='email'>Contact Email</label>
+            <label>Contact Email</label>
             <input type='text' name='email' required placeholder='email' ref={contactEmail}/>
 
-            <label for='phonenumber'>Contact PhoneNumber</label>
+            <label>Contact PhoneNumber</label>
             <input type='text' name='phonenumber' placeholder='123-456-7890' ref={contactPN}/>
 
-            <label for='notes'>Notes?</label>
-            <input type='text' name='notes' placeholder='bday?' ref={contactBD}/>
+            <label>Notes?</label>
+            <input type='text' name='notes' placeholder='bday?' ref={contactNotes}/>
 
             <div className='createButton'>
                 <button  type='submit'>Create New Contact</button>

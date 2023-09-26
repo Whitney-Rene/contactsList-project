@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Masonry from "react-responsive-masonry"
 
 function Contacts () {
@@ -14,6 +14,7 @@ function Contacts () {
             }
             
             const fetchContacts = await response.json();
+            // console.log('what is being returned from the call?', fetchContacts);
             setContacts(fetchContacts);
         } catch (error) {
             console.error('Error loading contacts')
@@ -21,21 +22,28 @@ function Contacts () {
 
     }
 
-    const loadStudents = () => {
-        // A function to fetch the list of students that will be load anytime that list change
-        fetch("http://localhost:8080/api/students")
-        .then((response) => response.json())
-        .then((students) => {
-            setStudents(students);
-        });
-    };
+    useEffect (() => {
+        loadContacts();
+    }, []);
+
     return (
         <>
-        <Masonry>
-        </Masonry>
+          <div className='ListContacts'>
+            <Masonry columnsCount={1} gutter="16px">
+                {contacts.map((contactItem) => {
+                    
+                    return (
+                            <div key={contactItem.id} className='MasCard'>{contactItem.name}</div>
+                    )
+
+                })
+                }
+                </Masonry>
+            </div>
         </>
     )
 
 }
+
 
 export default Contacts

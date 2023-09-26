@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import ViewContact from './view-contacts';
 import Masonry from "react-responsive-masonry"
 
 function Contacts () {
 
     const [contacts, setContacts] = useState([]);
+    const [selectedContact, setSelectedContact] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = (contact) => {
+        setSelectedContact(contact);
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setSelectedContact(null);
+        setIsModalOpen(false);
+    }
 
     const loadContacts = async () => {
         try {
@@ -29,17 +42,21 @@ function Contacts () {
     return (
         <>
           <div className='ListContacts'>
-            <Masonry columnsCount={1} gutter="16px">
-                {contacts.map((contactItem) => {
-                    
-                    return (
-                            <div key={contactItem.id} className='MasCard'>{contactItem.name}</div>
-                    )
 
-                })
-                }
-                </Masonry>
-            </div>
+            <Masonry columnsCount={1} gutter="16px">
+
+                {contacts.map ((contactItem) => (
+                    <div key={contactItem.id}>{contactItem.name}
+                    <button onClick={() => openModal(contactItem)}>View Details</button>
+                    </div>
+                ))}
+
+            {isModalOpen && (
+                <ViewContact contact={selectedContact} onClose={closeModal} />
+            )}
+
+            </Masonry>
+        </div>
         </>
     )
 

@@ -43,7 +43,7 @@ app.post('/addcontact', async (req, res) => {
 
             // INSERT INTO contacts (name, email, phonenumber, notes) VALUES ('Valerie-Hope', 'bMITWvh@gmail.com', '794-788-9987', 'Birthday: 02/12');
 
-            'INSERT INTO contacts (name, eamil, phonenumber, notes) VALUES ($1, $2, $3. $4) RETURNING *',
+            'INSERT INTO contacts (name, email, phonenumber, notes) VALUES ($1, $2, $3, $4) RETURNING *',
             [name, email, phonenumber, notes]
         )
     } catch (error) {

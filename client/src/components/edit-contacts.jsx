@@ -29,6 +29,7 @@ function EditContact ({contact, onClose, loadContacts}) {
             throw new Error ('Failed to update contact');
         }
 
+        //the location of this matters
         await loadContacts();
 
         const data = await response.json();

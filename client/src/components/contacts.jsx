@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
+
 import ViewContact from './view-contacts';
-import Modal from 'react-modal';
-import CreateContact from './create-contacts'
+import CreateContact from './create-contacts';
+import EditContact from './edit-contacts';
+
 import Masonry from "react-responsive-masonry";
-import '../App.css';
+import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../App.css';
 
-// Create a custom icon library
-import { library } from '@fortawesome/fontawesome-svg-core';
 
-// Import the specific icons you need
-import { faEye, faPenSquare } from '@fortawesome/free-solid-svg-icons';
-
-// Add the icons to the library
-library.add(faEye);
+import { library } from '@fortawesome/fontawesome-svg-core';  // Create a custom icon library
+import { faEye, faPenSquare } from '@fortawesome/free-solid-svg-icons';  // Import the specific icons you need
+library.add(faEye);  // Add the icons to the library
 
 
 Modal.setAppElement('#root');
@@ -23,10 +22,16 @@ function Contacts () {
     const [contacts, setContacts] = useState([]);
     const [selectedContact, setSelectedContact] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditOpen, setIsEditOpen] = useState(false);
 
     const openModal = (contact) => {
         setSelectedContact(contact);
         setIsModalOpen(true);
+    }
+
+    const openEdit = (contact) => {
+        setSelectedContact(contact);
+        setIsEditOpen(true);
     }
 
     const closeModal = () => {
@@ -57,25 +62,29 @@ function Contacts () {
 
     return (
         <>
-          <div className='ListContacts'>
+            <div className='ListContacts'>
 
-            <Masonry columnsCount={2} gutter="40px">
+                <Masonry columnsCount={2} gutter="40px">
 
-                {contacts.map ((contactItem) => (
-                    <div className='contactName' key={contactItem.id}>{contactItem.name}
-                    <FontAwesomeIcon icon='eye' className='iconEye ' onClick={() => openModal(contactItem)}/>
-                    <FontAwesomeIcon icon={faPenSquare} className='iconPen'/>
-                    </div>
-                ))}
+                    {contacts.map ((contactItem) => (
+                        <div className='contactName' key={contactItem.id}>{contactItem.name}
+                        <FontAwesomeIcon icon='eye' className='iconEye ' onClick={() => openModal(contactItem)}/>
+                        <FontAwesomeIcon icon={faPenSquare} className='iconPen' onClick={() => openEdit(contactItem)}/>
+                        </div>
+                    ))}
 
+                </Masonry>
+
+            </div>
+        
             {isModalOpen && (
                 <ViewContact contact={selectedContact} onClose={closeModal} />
             )}
 
-            </Masonry>
-        </div>
+            {isEditOpen && 
+                <EditContact contact={selectedContact} onClose={() => setIsEditOpen(false)} /> }
 
-        <CreateContact loadContacts={loadContacts}/>
+            <CreateContact loadContacts={loadContacts}/>
         </>
     )
 

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import '../App.css';
 
+
 function CreateContact ({loadContacts}) {
 
     const contactName = useRef();

@@ -4,6 +4,17 @@ import Modal from 'react-modal';
 import CreateContact from './create-contacts'
 import Masonry from "react-responsive-masonry";
 import '../App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+// Create a custom icon library
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+// Import the specific icons you need
+import { faEye, faPenSquare } from '@fortawesome/free-solid-svg-icons';
+
+// Add the icons to the library
+library.add(faEye);
+
 
 Modal.setAppElement('#root');
 
@@ -52,7 +63,8 @@ function Contacts () {
 
                 {contacts.map ((contactItem) => (
                     <div className='contactName' key={contactItem.id}>{contactItem.name}
-                    <button className='viewDetsBut' onClick={() => openModal(contactItem)}>View Details</button>
+                    <FontAwesomeIcon icon='eye' className='iconEye ' onClick={() => openModal(contactItem)}/>
+                    <FontAwesomeIcon icon={faPenSquare} className='iconPen'/>
                     </div>
                 ))}
 

@@ -11,7 +11,7 @@ function ViewContact ({contact, onClose}) {
                 <p> {contact.email}</p>
                 <p> {contact.phonenumber}</p>
                 <p> {contact.notes}</p>
-                <button onClick={onClose}>Close</button>
+                <button className='close' onClick={onClose}>Close</button>
             </div>
         </>
     )

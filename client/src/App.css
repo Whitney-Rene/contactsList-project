@@ -50,7 +50,7 @@ body {
   width:200px;
 } */
 
-.modal {
+.modal, .editContactModal{
   position: fixed;
   top: 50%;
   left: 50%;

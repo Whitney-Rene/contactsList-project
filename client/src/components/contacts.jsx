@@ -30,6 +30,7 @@ function Contacts () {
     }
 
     const openEdit = (contact) => {
+        console.log("Editing contact:", contact);
         setSelectedContact(contact);
         setIsEditOpen(true);
     }

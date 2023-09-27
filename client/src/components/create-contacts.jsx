@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import Modal from 'react-modal'; 
 import '../App.css';
 
 

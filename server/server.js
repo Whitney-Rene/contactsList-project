@@ -55,7 +55,6 @@ app.post('/addcontact', async (req, res) => {
 
 app.put('/editcontact/:contactId', async (req, res) => {
 
-    const contactID = req.params.contactId;
     const updatedContact = {
         contact_id : req.body.contact_id,
         name: req.body.name,
@@ -65,7 +64,7 @@ app.put('/editcontact/:contactId', async (req, res) => {
     }
 
     // UPDATE contacts SET notes = 'Birthday: 02/12' WHERE contact_id = 2;
-    const query = `UPDATE contacts SET name=$1, email=$2, phonenumber=$3, notes=$4 WHERE contact_id=${contactID} RETURNING *`;
+    const query = `UPDATE contacts SET name=$1, email=$2, phonenumber=$3, notes=$4 WHERE contact_id = ${updatedContact.contact_id} RETURNING *`;
     const values = [
         updatedContact.name,
         updatedContact.email,

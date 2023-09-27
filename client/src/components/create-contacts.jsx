@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import '../App.css'
+import '../App.css';
 
 function CreateContact ({loadContacts}) {
 
@@ -21,6 +21,8 @@ function CreateContact ({loadContacts}) {
                 throw new Error('Failed to add contact');
             };
 
+            await loadContacts();
+
             const responseData = await response.json();
         // console.log(responseData)
         } catch(error) {
@@ -29,32 +31,31 @@ function CreateContact ({loadContacts}) {
     
       };
 
-      const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
 
         const newContact = {name: contactName.current?.value, email: contactEmail.current?.value, phonenumber: contactPN.current?.value, notes: contactNotes.current?.value}
         console.log('did I grab it?', newContact);
 
-        handlePostRequest(newContact);
+        try {
+            await handlePostRequest(newContact); // Wait for the POST request to complete
+            contactName.current.value = '';
+            contactEmail.current.value = '';
+            contactPN.current.value = '';
+            contactNotes.current.value = '';
+          } catch (error) {
+            console.error('Error while adding contact:', error);
+          }
 
-        contactName.current.value='';
-        contactEmail.current.value='';
-        contactPN.current.value='';
-        contactNotes.current.value='';
-
-    }
-
-    useEffect (() => {
-        loadContacts();
-    }, []);
+        };
 
     return(
         <>
 
         <form className='form' onSubmit={handleSubmit}>
 
-            <p className='formTitle'>add a contact</p>
+            <p className='formTitle'>add a contact:</p>
 
             <label>Contact Name</label>
             <input type='text' name='contactname' required placeholder='name' ref={contactName}/>
@@ -68,8 +69,8 @@ function CreateContact ({loadContacts}) {
             <label>Notes?</label>
             <input type='text' name='notes' placeholder='bday? fav candy?' ref={contactNotes}/>
 
-            <div className='createButton'>
-                <button  type='submit'>Create New Contact</button>
+            <div className='space'>
+                <button  className='createButton' type='submit'>Create New Contact</button>
             </div>
 
         </form>

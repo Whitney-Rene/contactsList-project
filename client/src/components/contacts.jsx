@@ -3,6 +3,7 @@ import ViewContact from './view-contacts';
 import Modal from 'react-modal';
 import CreateContact from './create-contacts'
 import Masonry from "react-responsive-masonry";
+import '../App.css';
 
 Modal.setAppElement('#root');
 
@@ -31,7 +32,7 @@ function Contacts () {
             }
             
             const fetchContacts = await response.json();
-            // console.log('what is being returned from the call?', fetchContacts);
+            console.log('selectedContact', fetchContacts);
             setContacts(fetchContacts);
         } catch (error) {
             console.error('Error loading contacts')
@@ -47,7 +48,7 @@ function Contacts () {
         <>
           <div className='ListContacts'>
 
-            <Masonry columnsCount={1} gutter="16px">
+            <Masonry columnsCount={2} gutter="40px">
 
                 {contacts.map ((contactItem) => (
                     <div className='contactName' key={contactItem.id}>{contactItem.name}

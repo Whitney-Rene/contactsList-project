@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-color:blanchedalmond;
+}
+
 /* 
 .logo {
   height: 6em;
@@ -42,38 +46,92 @@
   color: #888;
 } */
 
-.MasCard {
+/* .MasCard {
   width:200px;
-}
+} */
 
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: rgb(245, 233, 209);
   padding: 20px;
   z-index: 1000;
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family:monospace;
+  color:grey;
 
 }
 
-label, input {
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px); /* Apply a blur effect */
+  z-index: 999; /* Should be below the modal */
+}
+
+label {
   display: block;
   align-items: center;
 }
 
 form {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
-.formTitle, .contactName {
+.contactName {
   font-weight: bold;
   color: lightsalmon;
+  font-family:monospace;
 }
 
-.viewDetsBu {
-  font-size: 7px; /* Adjust the font size as needed */
-  padding: 6px 12px; /* Increase padding to make the button larger */
+
+
+label {
+  color: burlywood;
+  font-family:monospace;
+  
+}
+
+.formTitle, .createButton{
+  color: powderblue;
+  font-weight: bold;
+  font-family:monospace;
+}
+
+h1 {
+  color: burlywood;
+  font-family:monospace;
+  margin-bottom: 70px;
+
+}
+
+::placeholder {
+  font-family:monospace;
+  font-size: 11px;
+}
+
+.space {
+  margin-top: 15px;
+}
+
+.viewDetsBut, .createButton {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 6px 12px; /* Padding for the button */
+  border: none; /* Remove the button border */
+  border-radius: 4px; /* Add a slight border radius */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
+}
+
+.viewDetsBut:hover {
+  background-color: #0056b3; /* Hover background color */
 }

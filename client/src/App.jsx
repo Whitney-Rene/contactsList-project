@@ -6,6 +6,7 @@ function App() {
 
   return (
     <>
+    <h1>Contacts</h1>
     <Contacts />
     </>
   )
@@ -14,5 +15,5 @@ function App() {
 export default App
 
 
-//issues for tomorrow: modal? & why it is not adding to list
+//issues for tomorrow: modal?
 //edit

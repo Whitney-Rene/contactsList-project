@@ -83,7 +83,7 @@ function Contacts () {
             )}
 
             {isEditOpen && 
-                <EditContact contact={selectedContact} onClose={() => setIsEditOpen(false)} /> }
+                <EditContact contact={selectedContact} onClose={() => setIsEditOpen(false)} loadContacts={loadContacts}/> }
 
             <CreateContact loadContacts={loadContacts}/>
         </>

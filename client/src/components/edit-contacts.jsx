@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 import { useState} from 'react';
 
-function EditContact ({contact, onClose}) {
+function EditContact ({contact, onClose, loadContacts}) {
     
     const [editedContact, setEditedContact] = useState({...contact});
     console.log("editedContact", editedContact);
@@ -29,11 +29,16 @@ function EditContact ({contact, onClose}) {
             throw new Error ('Failed to update contact');
         }
 
+        await loadContacts();
+
         const data = await response.json();
 
         onClose(); //close the modal
 
- 
+        //???
+        // onUpdateStudent(data);
+        // //???
+        // clearForm();
     } catch (error) {
         console.error('Error updating contact:', error);
     }

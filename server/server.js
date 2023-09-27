@@ -53,6 +53,36 @@ app.post('/addcontact', async (req, res) => {
     }
 });
 
+app.put('/editcontact/:contactId', async (req, res) => {
+
+    const contactID = req.params.contactId;
+    const updatedContact = {
+        contact_id : req.body.contact_id,
+        name: req.body.name,
+        email: req.body.email,
+        phonenumber: req.body.phonenumber,
+        notes: req.body.notes
+    }
+
+    // UPDATE contacts SET notes = 'Birthday: 02/12' WHERE contact_id = 2;
+    const query = `UPDATE contacts SET name=$1, email=$2, phonenumber=$3, notes=$4 WHERE contact_id=${contactID} RETURNING *`;
+    const values = [
+        updatedContact.name,
+        updatedContact.email,
+        updatedContact.phonenumber,
+        updatedContact.notes
+    ];
+
+    try {
+         const updated = await db.query(query, values);
+         console.log(updated.rows[0]);
+         res.send(updated.rows[0]);
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({error})
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Hola, Te quiero mama ${PORT}`)
 })

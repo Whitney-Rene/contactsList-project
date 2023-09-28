@@ -65,12 +65,14 @@ function Contacts () {
         <>
             <div className='ListContacts'>
 
-                <Masonry columnsCount={2} gutter="40px">
+                <Masonry columnsCount={2} gutter="60px">
 
                     {contacts.map ((contactItem) => (
                         <div className='contactName' key={contactItem.id}>{contactItem.name}
+                            <div>
                         <FontAwesomeIcon icon='eye' className='iconEye ' onClick={() => openModal(contactItem)}/>
                         <FontAwesomeIcon icon={faPenSquare} className='iconPen' onClick={() => openEdit(contactItem)}/>
+                            </div>
                         </div>
                     ))}
 

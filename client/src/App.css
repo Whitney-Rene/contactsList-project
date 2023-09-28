@@ -90,6 +90,15 @@ form {
   font-weight: bold;
   color: lightsalmon;
   font-family:monospace;
+  /* width: 100px;
+  margin: 10px;
+  padding: 10px;
+  text-align-last: center; */
+
+  display: flex;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  text-align: center; /* Center text */
 }
 
 
@@ -128,7 +137,7 @@ h1 {
 
 .iconEye, .iconPen {
   margin-left: 10px;
-
+  margin: 0 10px;
 }
 
 .iconEye:hover, .iconPen:hover {

@@ -13,7 +13,9 @@ import EditContact from './edit-contacts';
 import '../App.css'; //css
 
 //below is necessary to bind modal to my appElement
-Modal.setAppElement('#root');
+//the if statement, avoids an error in my testing
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
+// Modal.setAppElement('#root'); will throw an error for testing, use line 17 instead
 
 function Contacts () {
 

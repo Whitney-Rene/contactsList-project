@@ -1,11 +1,12 @@
-import React from 'react';
-import '../App.css'
+import React from 'react'; 
+import '../App.css' //css
 
 function ViewContact ({contact, onClose}) {
     // console.log(contact);
     return(
         <>
             <div class="backdrop"></div>
+            {/* print info on card and button with onClick=prop */}
             <div className='modal'>
                 <p> {contact.name}</p>
                 <p> {contact.email}</p>

@@ -1,13 +1,15 @@
-import '../App.css';
-import Modal from 'react-modal';
+import { useState} from 'react'; //import hook to manage local data
+import Modal from 'react-modal'; //import library for modal 
+import '../App.css'; //css
 
-import { useState} from 'react';
 
 function EditContact ({contact, onClose, loadContacts}) {
     
+    //state
     const [editedContact, setEditedContact] = useState({...contact});
     console.log("editedContact", editedContact);
 
+    //my understanding of this is unclear
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setEditedContact( {
@@ -16,6 +18,7 @@ function EditContact ({contact, onClose, loadContacts}) {
         });
     };
 
+    //req to api to edit db entity based on contact ID
     const handleSave = async () => {
         //'/editcontact/:contactId'
         try {
@@ -32,14 +35,11 @@ function EditContact ({contact, onClose, loadContacts}) {
         //the location of this matters
         await loadContacts();
 
+        //why is that shaded out?
         const data = await response.json();
 
-        onClose(); //close the modal
+        onClose(); //close the modal, after the save
 
-        //???
-        // onUpdateStudent(data);
-        // //???
-        // clearForm();
     } catch (error) {
         console.error('Error updating contact:', error);
     }
@@ -61,6 +61,7 @@ function EditContact ({contact, onClose, loadContacts}) {
 
                 <form>
 
+                    {/* value vs onChange ??? */}
                     <label>Name:</label>
                     <input type='text' name='name' value={editedContact.name} onChange={handleInputChange}/>
 

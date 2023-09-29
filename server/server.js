@@ -85,7 +85,8 @@ app.put('/editcontact/:contactId', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Hola, Te quiero mama ${PORT}`)
 })
-//I was having issues with running 2 apps on one port:
+
+//I was having issues with running 2 apps on one port, learned about running these codes in the terminal
     //lsof -i :1965 //who is listening on this port? 
     //17841 is also listening on port 1965
     //kill 17841

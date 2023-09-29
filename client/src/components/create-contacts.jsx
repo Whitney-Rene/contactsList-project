@@ -1,16 +1,16 @@
-import React, { useRef, useEffect } from 'react';
-import Modal from 'react-modal'; 
-import '../App.css';
+import React, { useRef } from 'react'; //for state
+import '../App.css'; //css
 
 
 function CreateContact ({loadContacts}) {
 
+    //hook to grab info from input boxes
     const contactName = useRef();
     const contactEmail = useRef();
     const contactPN = useRef();
     const contactNotes = useRef();
 
-
+    //send request to api (here is data) INSERT INTO contacts ...
     const handlePostRequest = async (data) => {
         try {
             const response = await fetch ('http://localhost:1965/addcontact', {
@@ -23,8 +23,10 @@ function CreateContact ({loadContacts}) {
                 throw new Error('Failed to add contact');
             };
 
+            //rerenders page with new added contact
             await loadContacts();
 
+            //why is that shaded out?
             const responseData = await response.json();
         // console.log(responseData)
         } catch(error) {
@@ -33,6 +35,7 @@ function CreateContact ({loadContacts}) {
     
       };
 
+    //handle submit button
     const handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -55,6 +58,7 @@ function CreateContact ({loadContacts}) {
     return(
         <>
 
+        {/* simple form to create new contact */}
         <form className='form' onSubmit={handleSubmit}>
 
             <p className='formTitle'>add a contact:</p>

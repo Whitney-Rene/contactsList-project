@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+body {
+  background-color:blanchedalmond;
+}
+
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +44,117 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+/* .MasCard {
+  width:200px;
+} */
+
+.modal, .editContactModal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(241, 238, 231);
+  padding: 20px;
+  z-index: 1000;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family:monospace;
+  color: burlywood;
+  font-weight: bolder;
+
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px); /* Apply a blur effect */
+  z-index: 999; /* Should be below the modal */
+}
+
+label {
+  display: block;
+  align-items: center;
+}
+
+form {
+  margin-top: 70px;
+}
+
+.contactName {
+  font-weight: bold;
+  color: lightsalmon;
+  font-family:monospace;
+  /* width: 100px;
+  margin: 10px;
+  padding: 10px;
+  text-align-last: center; */
+
+  display: flex;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  text-align: center; /* Center text */
+}
+
+
+
+label {
+  color: burlywood;
+  font-family:monospace;
+  
+}
+
+.formTitle, .createButton{
+  color: powderblue;
+  font-weight: bold;
+  font-family:monospace;
+}
+
+h1 {
+  color: burlywood;
+  font-family:monospace;
+  margin-bottom: 70px;
+
+}
+
+::placeholder {
+  font-family:monospace;
+  font-size: 11px;
+}
+
+.space {
+  margin-top: 15px;
+}
+
+.close {
+  background-color: powderblue;
+}
+
+.iconEye, .iconPen {
+  margin-left: 10px;
+  margin: 0 10px;
+}
+
+.iconEye:hover, .iconPen:hover {
+  color: powderblue; /* Hover color */
+}
+
+.createButton {
+  background-color: whitesmoke; /* Button background color */
+  color: powderblue;; /* Button text color */
+  padding: 6px 12px; /* Padding for the button */
+  border: none; /* Remove the button border */
+  border-radius: 4px; /* Add a slight border radius */
+  font-size: 14px; /* Font size */
+  cursor: pointer; /* Cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
+}
+
+.viewDetsBut:hover {
+  background-color: #0056b3; /* Hover background color */
 }

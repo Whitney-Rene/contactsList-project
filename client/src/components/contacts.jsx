@@ -7,9 +7,9 @@ import { faEye, faPenSquare } from '@fortawesome/free-solid-svg-icons';  // Impo
 library.add(faEye);  // Add the icons to the library
 
 //components
-import ViewContact from './view-contacts';
-import CreateContact from './create-contacts';
-import EditContact from './edit-contacts';
+import ViewContact from './ViewContacts';
+import CreateContact from './CreateContactsForm';
+import EditContact from './EditContactsModal';
 import '../App.css'; //css
 
 //below is necessary to bind modal to my appElement

@@ -74,7 +74,6 @@ app.put('/editcontact/:contactId', async (req, res) => {
 
     try {
          const updated = await db.query(query, values);
-         console.log(updated.rows[0]);
          res.send(updated.rows[0]);
     } catch (error) {
         console.log(error);

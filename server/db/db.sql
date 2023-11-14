@@ -29,8 +29,3 @@ UPDATE contacts SET notes = 'Birthday: 02/12' WHERE contact_id = 2;
 
 --DELETE rows/entities
 DELETE FROM contacts WHERE contact_id IN (1, 2, 3, 4, 5);
-
-
-
-
-

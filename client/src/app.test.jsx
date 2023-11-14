@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { describe, expect, test, vitest } from 'vitest';
-import App from './App';
+import { expect, test } from 'vitest';
+import App from './home';
   
 //I'd like ot add more tests in the future
 

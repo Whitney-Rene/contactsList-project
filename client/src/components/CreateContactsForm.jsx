@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'; //for state
+import React, { useState, useRef } from 'react'; //for state
 import '../App.css'; //css
 
 
@@ -9,6 +9,7 @@ function CreateContact ({loadContacts}) {
     const contactEmail = useRef();
     const contactPN = useRef();
     const contactNotes = useRef();
+    const [successMsg, setSuccessMsg] = useState(false);
 
     //send request to api (here is data) INSERT INTO contacts ...
     const handlePostRequest = async (data) => {
@@ -25,7 +26,7 @@ function CreateContact ({loadContacts}) {
 
             //rerenders page with new added contact
             await loadContacts();
-
+            setSuccessMsg(true);
             //why is that shaded out?
             const responseData = await response.json();
         // console.log(responseData)
@@ -70,16 +71,18 @@ function CreateContact ({loadContacts}) {
             <input type='text' name='email' required placeholder='email' ref={contactEmail}/>
 
             <label>Contact PhoneNumber</label>
-            <input type='text' name='phonenumber' placeholder='123-456-7890' ref={contactPN}/>
+            <input type='text' name='phonenumber' required placeholder='123-456-7890' ref={contactPN}/>
 
             <label>Notes?</label>
-            <input type='text' name='notes' placeholder='bday? fav candy?' ref={contactNotes}/>
+            <input type='text' name='notes' required placeholder='bday? fav candy?' ref={contactNotes}/>
 
             <div className='space'>
                 <button  className='createButton' type='submit'>Create New Contact</button>
             </div>
 
         </form>
+
+        <div className='success-message'>{successMsg && <p>new contact successfully submitted!</p>}</div>
 
         </>
     )

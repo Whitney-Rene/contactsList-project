@@ -9,47 +9,6 @@ body {
   background-color:blanchedalmond;
 }
 
-/* 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
-
-/* .MasCard {
-  width:200px;
-} */
-
 .modal, .editContactModal{
   position: fixed;
   top: 50%;
@@ -86,22 +45,15 @@ form {
   margin-top: 70px;
 }
 
-.contactName {
+.contactName, .success-message {
   font-weight: bold;
   color: lightsalmon;
   font-family:monospace;
-  /* width: 100px;
-  margin: 10px;
-  padding: 10px;
-  text-align-last: center; */
-
   display: flex;
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
-  text-align: center; /* Center text */
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
 }
-
-
 
 label {
   color: burlywood;
@@ -135,12 +87,12 @@ h1 {
   background-color: powderblue;
 }
 
-.iconEye, .iconPen {
+.iconEye, .iconPen, .iconTrash{
   margin-left: 10px;
   margin: 0 10px;
 }
 
-.iconEye:hover, .iconPen:hover {
+.iconEye:hover, .iconPen:hover, .iconTrash:hover {
   color: powderblue; /* Hover color */
 }
 

@@ -3,7 +3,7 @@ import Masonry from "react-responsive-masonry"; //content blocks
 import Modal from 'react-modal'; //pop-up window
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; //icons
 import { library } from '@fortawesome/fontawesome-svg-core';  // Create a custom icon library
-import { faEye, faPenSquare } from '@fortawesome/free-solid-svg-icons';  // Import the specific icons you need
+import { faEye, faPenSquare, faTrash } from '@fortawesome/free-solid-svg-icons';  // Import the specific icons you need
 library.add(faEye);  // Add the icons to the library
 
 //components
@@ -61,6 +61,27 @@ function Contacts () {
 
     }
 
+    const handleDelete = async (contactId) => {
+        try {
+            console.log('Deleting contact with ID:', contactId);
+          const response = await fetch(`http://localhost:1965/delete-contact/${contactId}`, {
+            method: 'DELETE',
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed to delete contact');
+          }
+      
+          // Remove the deleted contact from the state
+          setContacts((prevContacts) =>
+            prevContacts.filter((contact) => contact.id !== contactId)
+          );
+        } catch (error) {
+          console.error('Error deleting contact:', error);
+        }
+      };
+      
+
     //rerender page, need to understand this hook better
     useEffect (() => {
         loadContacts();
@@ -77,6 +98,7 @@ function Contacts () {
                             <div>
                         <FontAwesomeIcon icon='eye' className='iconEye ' onClick={() => openModal(contactItem)}/>
                         <FontAwesomeIcon icon={faPenSquare} className='iconPen' onClick={() => openEdit(contactItem)}/>
+                        <FontAwesomeIcon icon={faTrash} className='iconTrash' onClick={() => handleDelete(contactItem.contact_id)} />
                             </div>
                         </div>
                     ))}
@@ -100,6 +122,5 @@ function Contacts () {
     )
 
 }
-
 
 export default Contacts
